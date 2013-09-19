@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Marionette Docs</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/pygment_trac.css">
+    <link rel="stylesheet" href="/marionette-docs/css/styles.css">
+    <link rel="stylesheet" href="/marionette-docs/css/pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -15,7 +15,7 @@
     <div class="wrapper">
       <header>
         <h1>Marionette Docs</h1>
-		<div class="hnav"><a href="/">Home</a> <span class="footerlink"> / <a href="#footer">Documents</a></span></div>
+		<div class="hnav"><a href="/marionette-docs/">Home</a> <span class="footerlink"> / <a href="#footer">Documents</a></span></div>
         <p class="about">An attempt to use Github Pages to automatically convert the bare Marionette documentation files into something browsable.</p>
 		
 		<br>
@@ -26,9 +26,9 @@
         </ul>
 		
 		<ul class="docs">
-			<li class="home"><a href="/">Home</a></li>
+			<li class="home"><a href="/marionette-docs/">Home</a></li>
 			{% for post in site.posts %}
-				<li class="page"><a href="{{ post.url }}">{{ post.title }}</a></li>
+				<li class="page"><a href="/marionette-docs{{ post.url }}">{{ post.title }}</a></li>
 			{% endfor %}
 		</ul>
 		
@@ -40,9 +40,9 @@
       </section>
       <footer>
   		<ul class="docs" id="footer">
-  			<li class="home"><a href="/">Home</a></li>
+  			<li class="home"><a href="/marionette-docs/">Home</a></li>
   			{% for post in site.posts %}
-  				<li class="page"><a href="{{ post.url }}">{{ post.title }}</a></li>
+  				<li class="page"><a href="/marionette-docs{{ post.url }}">{{ post.title }}</a></li>
   			{% endfor %}
   		</ul>
 		
@@ -52,8 +52,8 @@
 		
       </footer>
     </div>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/scale.fix.js"></script>
-    <script src="/js/docs.js"></script>
+    <script src="/marionette-docs/js/jquery.min.js"></script>
+    <script src="/marionette-docs/js/scale.fix.js"></script>
+    <script src="/marionette-docs/js/docs.js"></script>
   </body>
 </html>
