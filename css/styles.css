@@ -208,12 +208,12 @@ header ul.docs, header ul.docs > li {
 }
 
 #index {
-	text-align: center;
-	padding: 40px;
+  text-align: center;
+  padding: 40px;
 }
 
 #index img {
-	width: 50%;
+  width: 50%;
 }
 
 
@@ -234,7 +234,7 @@ header ul.docs, header ul.docs > li {
   }
   
   header {
-	height: 180px;
+    height: 180px;
   }
   
   section {
@@ -249,7 +249,7 @@ header ul.docs, header ul.docs > li {
   }
   
   header .about {
-	  display: none;
+    display: none;
   }
   
   header ul.navpills {
@@ -260,18 +260,18 @@ header ul.docs, header ul.docs > li {
   
   header ul.docs li {
     float: left;
-	width: 185px;
-	margin-right: 20px;
+    width: 185px;
+    margin-right: 20px;
   }
   
   header ul.docs li.home {
     display: none;
   }
+  
   header .hnav {
     display: block;
-	margin-top: -20px;
+    margin-top: -20px;
   }
-  
 }
 
 
@@ -300,11 +300,11 @@ header ul.docs, header ul.docs > li {
   }
   
   header {
-	height: auto;
+  height: auto;
   }
   
   header .footerlink {
-	display: inline;
+  display: inline;
   }
   
   header ul.navpills {

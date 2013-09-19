@@ -15,40 +15,35 @@
     <div class="wrapper">
       <header>
         <h1>Marionette Docs</h1>
-		<div class="hnav"><a href="/marionette-docs/">Home</a> <span class="footerlink"> / <a href="#footer">Documents</a></span></div>
+        <div class="hnav"><a href="/marionette-docs/">Home</a> <span class="footerlink"> / <a href="#footer">Documents</a></span></div>
         <p class="about">An attempt to use Github Pages to automatically convert the bare Marionette documentation files into something browsable.</p>
-		
-		<br>
+        <br>
         <ul class="navpills">
           <li><a href="http://marionettejs.com">Marionette <strong>Website</strong></a></li>
           <li><a href="https://github.com/marionettejs/backbone.marionette">Marionette on <strong>GitHub</strong></a></li>
           <li><a href="https://github.com/marionettejs/backbone.marionette/tree/master/docs">Official docs <strong>Source</strong></a></li>
         </ul>
-		
-		<ul class="docs">
-			{% for post in site.posts %}
-				<li class="page"><a href="/marionette-docs{{ post.url }}">{{ post.title }}</a></li>
-			{% endfor %}
-		</ul>
-		
+        <ul class="docs">
+          {% for post in site.posts %}
+            <li class="page"><a href="/marionette-docs{{ post.url }}">{{ post.title }}</a></li>
+          {% endfor %}
+        </ul>
       </header>
       <section>
-		<div id="content">
-		  {{ content }}
-		</div>
+        <div id="content">
+          {{ content }}
+        </div>
       </section>
       <footer>
-  		<ul class="docs" id="footer">
-  			<li class="home"><a href="/marionette-docs/">Home</a></li>
-  			{% for post in site.posts %}
-  				<li class="page"><a href="/marionette-docs{{ post.url }}">{{ post.title }}</a></li>
-  			{% endfor %}
-  		</ul>
-		
+        <ul class="docs" id="footer">
+          <li class="home"><a href="/marionette-docs/">Home</a></li>
+          {% for post in site.posts %}
+            <li class="page"><a href="/marionette-docs{{ post.url }}">{{ post.title }}</a></li>
+          {% endfor %}
+        </ul>
+        
         <p>This <a href="https://github.com/m3nt0r/marionette-docs">project</a> is maintained by <a href="https://github.com/m3nt0r">m3nt0r</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-		
-		
       </footer>
     </div>
     <script src="/marionette-docs/js/jquery.min.js"></script>
