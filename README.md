@@ -15,3 +15,13 @@ I did this just for personal use and i am not affiliated in any way. I hope they
 will forgive me using the logo, but otherwise it would have looked a bit boring.
 
 Enjoy! 
+
+### Known Issues
+
+The "Documentation Index" segment on every page is not from me and is, including the
+anchors, part of the source files. However, those links don't work as they're not
+understood by the gh-pages renderer. I could manually fix them but that would make
+updating harder. I thought about resolving the links via Javascript via jQuery, but 
+that is unreliable as the titles and related anchors are inconsitently formatted/named.
+
+If you have an idea how to fix this, ping me. :)
