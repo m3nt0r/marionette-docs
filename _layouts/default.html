@@ -20,13 +20,12 @@
 		
 		<br>
         <ul class="navpills">
-          <li><a href="https://github.com/marionettejs/backbone.marionette/tree/master/docs">Marionette <strong>Website</strong></a></li>
+          <li><a href="http://marionettejs.com">Marionette <strong>Website</strong></a></li>
           <li><a href="https://github.com/marionettejs/backbone.marionette">Marionette on <strong>GitHub</strong></a></li>
           <li><a href="https://github.com/marionettejs/backbone.marionette/tree/master/docs">Official docs <strong>Source</strong></a></li>
         </ul>
 		
 		<ul class="docs">
-			<li class="home"><a href="/marionette-docs/">Home</a></li>
 			{% for post in site.posts %}
 				<li class="page"><a href="/marionette-docs{{ post.url }}">{{ post.title }}</a></li>
 			{% endfor %}
