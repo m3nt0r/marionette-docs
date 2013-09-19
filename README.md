@@ -33,7 +33,7 @@ gh-pages does not support plugins, i had to add a tiny "front matter" header int
 stating which layout to use ('default'). That's all. I intend to replace files and change 
 the date prefix accordingly if an update is in order. 
 
-## Extending
+### Extending
 
 Here's some stuff that could be done to ease maintaining the repo.
 
