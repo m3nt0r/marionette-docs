@@ -1,5 +1,5 @@
-marionette-docs.github.io (UNOFFICIAL) 
-======================================
+marionette-docs (UNOFFICIAL) 
+============================
 
 Backbone Marionette documentation as GitHub Pages project
 
