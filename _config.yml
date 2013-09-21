@@ -1,7 +1,9 @@
-safe: false
+safe: true
 lsi: false
 pygments: false
-permalink: /:title
+exclude: ['node_modules', 'package.json', 'bower.json', 'Gruntfile.js']
 title: Backbone.Marionette Docs
+baseurl: /marionette-docs
+permalink: /:title
 markdown: redcarpet
 markdown_ext: md

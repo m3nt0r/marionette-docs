@@ -1,0 +1,31 @@
+{
+  "name": "marionette-docs",
+  "version": "1.0.0",
+  "description": "Backbone Marionette documentation as GitHub Pages project",
+  "homepage": "http://m3nt0r.github.io/marionette-docs/",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-less": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-exec": "*"
+  },
+  "keywords": [
+    "jekyll",
+    "backbone",
+    "marionette",
+    "documentation",
+    "javascript",
+    "reference",
+    "gh-pages"
+  ],
+  "author": {
+    "name": "Kjell Bublitz",
+    "email": "m3nt0r.de@gmail.com"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}
