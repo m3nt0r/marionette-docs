@@ -64,3 +64,6 @@ I think this covers more than enough tools for anyone wanting to improve this li
 on your system configuration that may not be the case. All paths are absolute, so there shouldn't 
 be a problem but please be aware that this is quick n dirty. Use at your own risk. :)
 
+### License
+
+[MIT license](http://kb.mit-license.org/)
