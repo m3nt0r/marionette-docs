@@ -37,8 +37,6 @@ the date prefix accordingly if an update is in order.
 
 Here's some stuff that could be done to ease maintaining the repo.
 
-- Adding the official repo as submodule
-- Writing a grunt task to update the `_posts` folder
 - Finding a fix for the missing index anchors
 - CI
 

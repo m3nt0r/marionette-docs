@@ -1,4 +1,5 @@
 .DS_Store
-_site
 node_modules
+_site
+_repo
 _sources/libs

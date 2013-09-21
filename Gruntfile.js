@@ -85,7 +85,20 @@ module.exports = function(grunt) {
 				tasks: ['less']
 			}
 		},
+		
 		exec: {
+			// docs update
+			clone: {
+				cmd: 'ROOT=`pwd` && git clone https://github.com/marionettejs/backbone.marionette $ROOT/_repo'
+			},
+			makedoc: {
+				cmd: 'ROOT=`pwd` && TODAY=`date +%Y-%m-%d` && cd _repo/docs && echo "Transform docs to posts" && for f in *.md; do echo "---\nlayout: default\n---\n" | cat - $f > /tmp/docs && mv /tmp/docs $ROOT/_posts/$TODAY-$f; done'
+			},
+			cleanup: {
+				cmd: 'ROOT=`pwd` && rm -rf $ROOT/_repo'
+			},
+			
+			// jekyll shortcuts
 			build: {
 				cmd: "jekyll build --baseurl '' "
 			},
@@ -104,6 +117,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-exec');
 
 	// Tasks.
+	grunt.registerTask('update', ['exec:cleanup', 'exec:clone', 'exec:makedoc', 'exec:cleanup']);
 	grunt.registerTask('build', ['js', 'css', 'exec:build']);
 	grunt.registerTask('server', ['js', 'css', 'exec:server']);
 	grunt.registerTask('js', ['jshint', 'concat', 'uglify']);
