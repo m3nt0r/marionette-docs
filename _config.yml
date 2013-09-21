@@ -1,0 +1,9 @@
+safe: true
+lsi: false
+pygments: false
+exclude: ['node_modules', 'package.json', 'bower.json', 'Gruntfile.js']
+title: Backbone.Marionette Docs
+baseurl: /marionette-docs
+permalink: /:title
+markdown: redcarpet
+markdown_ext: md

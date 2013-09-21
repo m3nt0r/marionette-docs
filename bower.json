@@ -1,0 +1,16 @@
+{
+  "name": "marionette-docs",
+  "version": "1.0.0",
+  "dependencies": {
+    "underscore": "~1.5.1",
+    "backbone": "~1.0.0",
+    "marionette": "*",
+    "underscore.string": "*",
+    "jquery": "~1.10.2"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
