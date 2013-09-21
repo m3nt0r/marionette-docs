@@ -40,3 +40,27 @@ Here's some stuff that could be done to ease maintaining the repo.
 - Finding a fix for the missing index anchors
 - CI
 
+### Developing
+
+I am using grunt and bower via NPM to run build tasks and get the latest libs. If you want 
+to work with them aswell, you have to run the following command inside the project root-folder.
+
+```
+$ npm install && bower install
+```
+
+This will get all the development packages you need so you can run the following tasks:
+
+- `grunt js` to build and minify all javascript
+- `grunt css` to build and minify all less files
+- `grunt update` to clone marionette and recreate _posts
+- `grunt build` to recreate _site for local dev
+- `grunt server` to start a local webserver at port 4000
+- `grunt watch` to run either js or css tasks if _sources changes
+
+I think this covers more than enough tools for anyone wanting to improve this little project.
+
+**Important Note** on "update": It's a bash on-liner for the most part and "works for me (tm)". Depending
+on your system configuration that may not be the case. All paths are absolute, so there shouldn't 
+be a problem but please be aware that this is quick n dirty. Use at your own risk. :)
+
