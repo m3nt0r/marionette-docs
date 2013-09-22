@@ -177,6 +177,9 @@ header ul.docs > li {
   margin: 0;
   line-height: 1;
 }
+ul.docs li.page {
+  text-transform: capitalize;
+}
 footer {
   width: 270px;
   float: left;

@@ -48,7 +48,7 @@ module.exports = function(grunt) {
 				}
 			},
 			all: [
-				'_sources/js/<%= pkg.name %>/**/*.js'
+				'_sources/js/**/*.js'
 			]
 		},
 		uglify: {
