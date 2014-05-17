@@ -106,5 +106,3 @@ Backbone.Marionette.TemplateCache.prototype.compileTemplate = function(rawTempla
   return Handlebars.compile(rawTemplate);
 }
 ```
-
-

@@ -4,12 +4,12 @@ layout: default
 
 # Marionette.Layout
 
-A `Layout` is a hybrid of an `ItemView` and a collection of `Region` objects. They 
-are ideal for rendering application layouts with multiple sub-regions 
+A `Layout` is a hybrid of an `ItemView` and a collection of `Region` objects. They
+are ideal for rendering application layouts with multiple sub-regions
 managed by specified region managers.
 
 A layout can also act as a composite-view to aggregate multiple
-views and sub-application areas of the screen allowing applications to 
+views and sub-application areas of the screen allowing applications to
 attach multiple region managers to dynamically rendered HTML.
 
 You can create complex views by nesting layout managers within `Regions`.
@@ -17,8 +17,8 @@ You can create complex views by nesting layout managers within `Regions`.
 For a more in-depth discussion on Layouts, see the blog post
 [Manage Layouts And Nested Views With Backbone.Marionette](http://lostechies.com/derickbailey/2012/03/22/managing-layouts-and-nested-views-with-backbone-marionette/)
 
-Please see 
-[the Marionette.ItemView documentation](marionette.itemview.md) 
+Please see
+[the Marionette.ItemView documentation](marionette.itemview.md)
 for more information on available features and functionality.
 
 Additionally, interactions with Marionette.Region
@@ -34,6 +34,7 @@ will provide features such as `onShow` callbacks, etc. Please see
 * [Nested Layouts And Views](#nested-layouts-and-views)
 * [Closing A Layout](#closing-a-layout)
 * [Custom Region Type](#custom-region-type)
+* [Region Naming](#region-naming)
 
 ## Basic Usage
 
@@ -93,7 +94,7 @@ Marionette.Layout.extend({
 });
 ```
 
-Note that the function recieves the view's `options` arguments that 
+Note that the function recieves the view's `options` arguments that
 were passed in to the view's constructor. `this.options` is not yet
 available when the regions are first initialized, so the options
 must be accessed through this parameter.
@@ -102,7 +103,7 @@ must be accessed through this parameter.
 
 Any defined regions within a layout will be available to the
 layout or any calling code immediately after instantiating the
-layout. This allows a layout to be attached to an existing 
+layout. This allows a layout to be attached to an existing
 DOM element in an HTML page, without the need to call a render
 method or anything else, to create the regions.
 
@@ -128,7 +129,7 @@ region to close by calling the `close` method on them. This will
 force every view in the region, and sub-views if any, to be closed
 as well. Once the regions have been closed, the regions will be
 reset so that they are no longer referencing the element of the previous
-layout render. 
+layout render.
 
 Then after the Layout is finished re-rendering itself,
 showing a view in the layout's regions will cause the regions to attach
@@ -168,15 +169,15 @@ layout.show(new MenuView());
 You can nest layouts into region managers as deeply as you want.
 This provides for a well organized, nested view structure.
 
-## Closing A Layout 
+## Closing A Layout
 
 When you are finished with a layout, you can call the
 `close` method on it. This will ensure that all of the region managers
 within the layout are closed correctly, which in turn
 ensures all of the views shown within the regions are closed correctly.
 
-If you are showing a layout within a parent region manager, replacing 
-the layout with another view or another layout will close the current 
+If you are showing a layout within a parent region manager, replacing
+the layout with another view or another layout will close the current
 one, the same it will close a view.
 
 All of this ensures that layouts and the views that they
@@ -186,11 +187,11 @@ contain are cleaned up correctly.
 
 If you have the need to replace the `Region` with a region class of
 your own implementation, you can specify an alternate class to use
-with the `regionType` propery of the `Layout`.
+with the `regionType` property of the `Layout`.
 
 ```js
 MyLayout = Backbone.Marionette.Layout.extend({
-  regionType: SomeCustomRegion 
+  regionType: SomeCustomRegion
 });
 ```
 
@@ -235,7 +236,7 @@ layout.addRegion("foo", "#foo");
 layout.foo.show(new someView());
 ```
 
-addRegions: 
+addRegions:
 
 ```js
 var layout = new MyLayout();
@@ -264,3 +265,31 @@ or added later.
 
 For more information on using these methods, see
 the `regionManager` documentation.
+
+## Region Naming
+
+A Layouts' Regions are attached directly to the Layout instance with the name of the region
+as the key and the region itself as the value. Because of this, you need to be careful
+to avoid conflicts with existing properties on the Layout when you name your Region.
+
+The prototype chain of Layouts is:
+
+`Backbone.View > Marionette.View > Marionette.ItemView > Marionette.Layout`
+
+Consequently, every property on each of those Classes must be avoided as Region names. The most
+common issue people run into is trying to name their Region *"attributes"*. Be aware
+that you are **not** able to do this.
+
+The following is an abbreviated list of other names that can't be used as Region names. For a more
+complete list refer to the API documentation for each Class on the prototype chain:
+
+* attributes
+* constructor
+* regionType
+* render
+* close
+* addRegion
+* addRegions
+* removeRegion
+
+*Note: this is a known issue that is flagged for being fixed in v2*

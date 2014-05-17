@@ -4,10 +4,10 @@ layout: default
 
 # Marionette.Application
 
-The `Backbone.Marionette.Application` object is the hub of your composite 
+The `Backbone.Marionette.Application` object is the hub of your composite
 application. It organizes, initializes and coordinates the various pieces of your
-app. It also provides a starting point for you to call into, from your HTML 
-script block or from your JavaScript files directly if you prefer to go that 
+app. It also provides a starting point for you to call into, from your HTML
+script block or from your JavaScript files directly if you prefer to go that
 route.
 
 The `Application` is meant to be instantiated directly, although you can extend
@@ -22,7 +22,10 @@ MyApp = new Backbone.Marionette.Application();
 * [Adding Initializers](#adding-initializers)
 * [Application Event](#application-event)
 * [Starting An Application](#starting-an-application)
-* [app.vent: Event Aggregator](#appvent-event-aggregator)
+* [Messaging Systems](#messaging-systems)
+  * [Event Aggregator](#event-aggregator)
+  * [Request Response](#request-response)
+  * [Commands](#commands)
 * [Regions And The Application Object](#regions-and-the-application-object)
   * [jQuery Selector](#jquery-selector)
   * [Custom Region Type](#custom-region-type)
@@ -96,7 +99,7 @@ object (see below).
 
 ## Starting An Application
 
-Once you have your application configured, you can kick everything off by 
+Once you have your application configured, you can kick everything off by
 calling: `MyApp.start(options)`.
 
 This function takes a single optional parameter. This parameter will be passed
@@ -113,22 +116,72 @@ var options = {
 MyApp.start(options);
 ```
 
-## app.vent: Event Aggregator
+## Messaging Systems
 
-Every application instance comes with an instance of `Backbone.Wreqr.EventAggregator` 
-called `app.vent`.
+Application instances have an instance of all three [messaging systems](http://en.wikipedia.org/wiki/Message_passing) of `Backbone.Wreqr` attached to them. This
+section will give a brief overview of the systems; for a more in-depth look you are encouraged to read
+the [`Backbone.Wreqr` documentation](https://github.com/marionettejs/backbone.wreqr).
+
+### Event Aggregator
+
+The Event Aggregator is available through the `vent` property. `vent` is convenient for passively sharing information between
+pieces of your application as events occur.
 
 ```js
 MyApp = new Backbone.Marionette.Application();
 
-MyApp.vent.on("foo", function(){
-  alert("bar");
+// Alert the user on the 'minutePassed' event
+MyApp.vent.on("minutePassed", function(someData){
+  alert("Received", someData);
 });
 
-MyApp.vent.trigger("foo"); // => alert box "bar"
+// This will emit an event with the value of window.someData every minute
+window.setInterval(function() {
+  MyApp.vent.trigger("minutePassed", window.someData);
+}, 1000 * 60);
 ```
 
-See the [`Backbone.Wreqr`](https://github.com/marionettejs/backbone.wreqr) documentation for more details.
+### Request Response
+
+Request Response is a means for any component to request information from another component without being tightly coupled. An instance of Request Response is available on the Application as the `reqres` property.
+
+```js
+MyApp = new Backbone.Marionette.Application();
+
+// Set up a handler to return a todoList based on type
+MyApp.reqres.setHandler("todoList", function(type){
+  return this.todoLists[type];
+});
+
+// Make the request to get the grocery list
+var groceryList = MyApp.reqres.request("todoList", "groceries");
+
+// The request method can also be accessed directly from the application object
+var groceryList = MyApp.request("todoList", "groceries");
+```
+
+### Commands
+
+Commands is used to make any component tell another component to perform an action without a direct reference to it. A Commands instance is available under the `commands` property of the Application.
+
+Note that the callback of a command is not meant to return a value.
+
+```js
+MyApp = new Backbone.Marionette.Application();
+
+MyApp.model = new Backbone.Model();
+
+// Set up the handler to call fetch on the model
+MyApp.commands.setHandler("fetchData", function(reset){
+  MyApp.model.fetch({reset: reset});
+});
+
+// Order that the data be fetched
+MyApp.commands.execute("fetchData", true);
+
+// The execute function is also available directly from the application
+MyApp.execute("fetchData", true);
+```
 
 ## Regions And The Application Object
 
@@ -202,11 +255,11 @@ var r1Again = app.r1;
 ```
 
 Accessing a region by named attribute is equivalent to accessing
-it from the `getRegion` method. 
+it from the `getRegion` method.
 
 ### Removing Regions
 
-Regions can also be removed with the `removeRegion` method, passing in 
+Regions can also be removed with the `removeRegion` method, passing in
 the name of the region to remove as a string value:
 
 ```js

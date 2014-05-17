@@ -13,6 +13,7 @@ Have your routers configured to call the method on your object, directly.
 * [Configure Routes In Constructor](#configure-routes-in-constructor)
 * [Add Routes At Runtime](#add-routes-at-runtime)
 * [Specify A Controller](#specify-a-controller)
+* [onRoute](#onroute)
 
 ## Configure Routes
 
@@ -24,7 +25,7 @@ MyRouter = Backbone.Marionette.AppRouter.extend({
   appRoutes: {
     "some/route": "someMethod"
   },
-  
+
   /* standard routes can be mixed with appRoutes/Controllers above */
   routes : {
 	"some/otherRoute" : "someOtherMethod"
@@ -32,7 +33,7 @@ MyRouter = Backbone.Marionette.AppRouter.extend({
   someOtherMethod : function(){
 	// do something here.
   }
-  
+
 });
 ```
 
@@ -65,12 +66,22 @@ Backbone's Router, but has all the same semantics and behavior of the `appRoutes
 configuration.
 
 ```js
-var MyRouter = Marionette.AppRouter.extend({
-
-});
+var MyRouter = Marionette.AppRouter.extend({});
 
 var router = new MyRouter();
 router.appRoute("/foo", "fooThat");
+```
+Also you can specify a controller with the multiple routes at runtime with method
+`processAppRoutes`. However, In this case the current controller of `AppRouter` will not change.
+
+```js
+var MyRouter = Marionette.AppRouter.extend({});
+
+var router = new MyRouter();
+router.processAppRoutes(myController, {
+  "foo": "doFoo",
+  "bar/:id": "doBar"
+});
 ```
 
 ## Specify A Controller
@@ -100,8 +111,13 @@ new MyRouter({
 });
 ```
 
-The object that is used as the `controller` has no requirements, other than it will 
+The object that is used as the `controller` has no requirements, other than it will
 contain the methods that you specified in the `appRoutes`.
 
 It is recommended that you divide your controller objects into smaller pieces of related functionality
 and have multiple routers / controllers, instead of just one giant router and controller.
+
+## onRoute
+
+If it exists, AppRouters will call the `onRoute` method whenever a user navigates within your app. The
+callback receives three arguments: the name, path, and arguments of the route.

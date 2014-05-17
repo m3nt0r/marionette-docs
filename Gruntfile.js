@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 					'_sources/libs/underscore/underscore-min.js',
 					'_sources/libs/underscore.string/dist/underscore.string.min.js',
 					'_sources/libs/backbone/backbone-min.js',
-					'_sources/libs/marionette/lib/backbone.marionette.min.js',
+					'_sources/libs/marionette/lib/backbone.marionette.min.js'
 				],
 				dest: 'js/<%= pkg.name %>.libs.js'
 			}
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
 		less: {
 			dev: {
 				files: {
-					"css/<%= pkg.name %>.css": "_sources/less/main.less",
+					"css/<%= pkg.name %>.css": "_sources/less/main.less"
 				}
 			},
 			dist: {
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
 					yuicompress: true
 				},
 				files: {
-					"css/<%= pkg.name %>.min.css": "_sources/less/main.less",
+					"css/<%= pkg.name %>.min.css": "_sources/less/main.less"
 				}
 			}
 		},
@@ -100,10 +100,10 @@ module.exports = function(grunt) {
 			
 			// jekyll shortcuts
 			build: {
-				cmd: "jekyll build --baseurl '' "
+				cmd: "jekyll build "
 			},
 			server: {
-				cmd: "jekyll serve --baseurl '' --watch"
+				cmd: "jekyll serve --watch"
 			}
 		}
 	});

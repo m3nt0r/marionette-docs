@@ -4,9 +4,13 @@ layout: default
 
 # Marionette.Controller
 
-A multi-purpose object to use as a controller for
-modules and routers, and as a mediator for workflow
-and coordination of other objects, views, and more.
+A Controller is a white-label Marionette Object. Its name can be a cause for
+confusion, as it actually has nothing to do with the popular MVC architectural pattern.
+Instead, it's better to think of the Controller as a base object from which you can build.
+
+Controllers should be used when you have a task that you would like an object to be responsible for,
+but none of the other Marionette Classes quite make sense to do it. It's a base object for you to use to
+create a new Class altogether.
 
 ## Documentation Index
 
@@ -56,40 +60,41 @@ unbinding all of the events that are directly attached to the controller
 instance, as well as those that are bound using the EventBinder from
 the controller.
 
-The `close` method will trigger a "close" event and corresponding
-`onClose` method call:
+Invoking the `close` method will trigger a "close" event and corresponding
+`onClose` method call. These calls will be passed any arguments `close`
+was invoked with.
 
 ```js
 // define a controller with an onClose method
 var MyController = Marionette.Controller.extend({
 
-  onClose: function(){
+  onClose: function(arg1, arg2){
     // put custom code here, to close this controller
   }
 
-})
+});
 
 // create a new controller instance
 var contr = new MyController();
 
 // add some event handlers
-contr.on("close", function(){ ... });
+contr.on("close", function(arg1, arg2){ ... });
 contr.listenTo(something, "bar", function(){...});
 
 // close the controller: unbind all of the
-// event handlers, trigger the "close" event and 
+// event handlers, trigger the "close" event and
 // call the onClose method
-controller.close();
+contr.close(arg1, arg2);
 ```
 
 ## On The Name 'Controller'
 
 The name `Controller` is bound to cause a bit of confusion, which is
 rather unfortunate. There was some discussion and debate about what to
-call this object, the idea that people would confuse this with an 
+call this object, the idea that people would confuse this with an
 MVC style controller came up a number of times. In the end, we decided
 to call this a controller anyway--as the typical use case is to control
-the workflow and process of an application and/or module. 
+the workflow and process of an application and/or module.
 
 But the truth is, this is a very generic, multi-purpose object that can
 serve many different roles, in many different scenarios. We are always open
